@@ -41,13 +41,13 @@ public abstract class Konto {
 
 
     public String kontoauszug() {
-        return "---- Kontoauszug ----" +
-                "Inhaber: " + kontoinhaber +
-                "Kontoart: " + kontoart +
-                "Bankleitzahl: " + bankleitzahl +
-                "Kontonummer: " + kontonummer +
-                "Kontostand: " + kontostand +
-                "---------------------";
+        return "\n---- Kontoauszug ----" +
+                "\nInhaber: " + kontoinhaber +
+                "\nKontoart: " + kontoart +
+                "\nBankleitzahl: " + bankleitzahl +
+                "\nKontonummer: " + kontonummer +
+                "\nKontostand: " + kontostand +
+                "\n---------------------";
     }
 
     public abstract boolean darfAbheben(double betrag);
