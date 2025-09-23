@@ -1,9 +1,14 @@
-public class Girokonto extends Konto{
+public class Girokonto extends Konto {
 
-    private int ueberziehungsrahmen;
+    private double ueberziehungsrahmen = 500;
 
-    public Girokonto(String kontoinhaber, String kontonummer) {
-        super(kontoinhaber, 10, kontonummer, 0, "Girokonto");
-        this.ueberziehungsrahmen = 500;
+    public Girokonto(String kontoinhaber, int bankleitzahl, String kontonummer, double startguthaben, double ueberziehungsrahmen) {
+        super(kontoinhaber, bankleitzahl, kontonummer, startguthaben, "Girokonto");
+        this.ueberziehungsrahmen = ueberziehungsrahmen;
+    }
+
+    @Override
+    public boolean darfAbheben(double betrag) {
+        return (getKontostand() - betrag) >= -ueberziehungsrahmen;
     }
 }

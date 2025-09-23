@@ -1,89 +1,62 @@
-import java.util.concurrent.atomic.AtomicLong;
-
-public class Konto {
-
+public abstract class Konto {
     private String kontoinhaber;
     private int bankleitzahl;
     private String kontonummer;
-    private double kontostand;
+    public double kontostand;
     private String kontoart;
 
-    public Konto(String kontoinhaber, int bankleitzahl, String kontonummer, double kontostand, String kontoart) {
+    public Konto(String kontoinhaber, int bankleitzahl, String kontonummer, double startguthaben, String kontoart) {
         this.kontoinhaber = kontoinhaber;
         this.bankleitzahl = bankleitzahl;
         this.kontonummer = kontonummer;
-        this.kontostand = kontostand;
+        this.kontostand = startguthaben;
         this.kontoart = kontoart;
     }
 
-    @Override
-    public String toString() {
-        return "Kontoinhaber: " + kontoinhaber +
-                "\nBankleitzahl: " + bankleitzahl +
-                "\nKontonummer: " + kontonummer +
-                "\nKontostand: " + kontostand +
-                "\nKontoart: " + kontoart;
-    }
-
-    public static void kontoAnlegen(String kontoinhaber, String kontoart){
-        final AtomicLong counter = new AtomicLong(10_000_000);
-        String kontonummer = String.format("%08d", counter.getAndIncrement());
-
-        switch(kontoart){
-            case "Girokonto":
-                Girokonto gk1 = new Girokonto(kontoinhaber, kontonummer);
-                System.out.println("\nIhr neues Girokonto wurde angelegt!");
-                System.out.printf("-------------------------------------------------\n" +
-                        gk1.toString() +
-                        "\n-------------------------------------------------\n\n");
-            break;
+    public void einzahlen(double betrag) {
+        if (betrag > 0) {
+            kontostand += betrag;
+        } else  {
+            System.out.println("Invalider Betrag");
         }
     }
 
-    public double einzahlen(){
-        return kontostand;
+    public boolean abheben(double betrag) {
+        if (betrag > 0 && darfAbheben(betrag)) {
+            kontostand -= betrag;
+            return true;
+        }else {
+            return false;
+        }
     }
 
-    //#region Getter und Setter
-    public String getKontoinhaber() {
-        return kontoinhaber;
+    public boolean ueberweisen(Konto ziel, double betrag) {
+        if (ziel == null) return false;
+        if (abheben(betrag)) {
+            ziel.einzahlen(betrag);
+            return true;
+        }
+        return false;
     }
 
-    public void setKontoinhaber(String kontoinhaber) {
-        this.kontoinhaber = kontoinhaber;
+
+    public String kontoauszug() {
+        return "---- Kontoauszug ----" +
+                "Inhaber: " + kontoinhaber +
+                "Kontoart: " + kontoart +
+                "Bankleitzahl: " + bankleitzahl +
+                "Kontonummer: " + kontonummer +
+                "Kontostand: " + kontostand +
+                "---------------------";
     }
 
-    public int getBankleitzahl() {
-        return bankleitzahl;
-    }
-
-    public void setBankleitzahl(int bankleitzahl) {
-        this.bankleitzahl = bankleitzahl;
-    }
+    public abstract boolean darfAbheben(double betrag);
 
     public String getKontonummer() {
         return kontonummer;
     }
 
-    public void setKontonummer(String kontonummer) {
-        this.kontonummer = kontonummer;
-    }
-
     public double getKontostand() {
         return kontostand;
     }
-
-    public void setKontostand(double kontostand) {
-        this.kontostand = kontostand;
-    }
-
-    public String getKontoart() {
-        return kontoart;
-    }
-
-    public void setKontoart(String kontoart) {
-        this.kontoart = kontoart;
-    }
-
-    //endregion
 }
