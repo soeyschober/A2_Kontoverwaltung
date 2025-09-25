@@ -1,4 +1,4 @@
-# Kontoverwaltung
+# Kontoverwaltung - GUI Einbindung
 
 Author: Soey Schober
 
@@ -27,7 +27,7 @@ Beim Start des `Main`-Programms werden die Konten erzeugt und Methoden wie Einza
 
 Die Konsolenausgabe zeigt den Ablauf der Aktionen (z. B. Kontostände, Fehlermeldungen bei Überziehung usw.).
 
-## Output (Konto anlegen, Überweisen & Konto auflösen)
+## Output (Konto anlegen, Überweisen & Konto auflösen) - Console
 
 ### Konto anlegen
 
@@ -52,3 +52,21 @@ Die Konsolenausgabe zeigt den Ablauf der Aktionen (z. B. Kontostände, Fehlermel
 (mit Überprüfung)
 
 <img width="376" height="665" alt="image" src="https://github.com/user-attachments/assets/e01ecfbb-a32f-4d5e-8b41-56124300aa29" />
+
+## Output (Konto anlegen, Konto wechseln) - mit GUI
+
+### Start
+
+<img width="787" height="482" alt="image" src="https://github.com/user-attachments/assets/deb3be9c-e16a-45d0-a8d5-62f5b84f1db5" />
+
+
+### Konto anlegen
+
+<img width="782" height="479" alt="image" src="https://github.com/user-attachments/assets/3c875d07-9ddf-4403-ba1b-e35c579f8e62" />
+<img width="788" height="480" alt="image" src="https://github.com/user-attachments/assets/e07023b8-24ae-45b6-aecc-f7a82e282b8e" />
+
+### Konto wechseln
+
+<img width="785" height="480" alt="image" src="https://github.com/user-attachments/assets/b99aaaae-16c7-4f3d-b832-a312c1ff4cf3" />
+<img width="783" height="475" alt="image" src="https://github.com/user-attachments/assets/dfb2ac8a-e458-4548-9b0d-e20f90faef8c" />
+
