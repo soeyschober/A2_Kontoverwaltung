@@ -1,58 +1,39 @@
 import java.util.*;
+import javax.swing.*;
 
 public class Main {
     private static final Scanner sc = new Scanner(System.in);
-    private static final List<Konto> konten = new ArrayList<>();
+    static final List<Konto> konten = new ArrayList<>();
 
     public static void main(String[] args) {
-        boolean running = true;
-
-        while (running) {
-            printMenu();
-            int wahl = readInt("Auswahl: ");
-
-            switch (wahl) {
-                case 1:
-                    kontoAnlegen();
-                    break;
-                case 2:
-                    kontoAufloesen();
-                    break;
-                case 3:
-                    einzahlen();
-                    break;
-                case 4:
-                    abheben();
-                    break;
-                case 5:
-                    kontoauszug();
-                    break;
-                case 6:
-                    ueberweisen();
-                    break;
-                case 7:
-                    alleKontenAnzeigen();
-                    break;
-                case 0:
-                    System.out.println("Ciao. Programm beendet.");
-                    running = false;
-                    break;
-                default:
-                    System.out.println("Ungültige Eingabe.");
-            }
-        }
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            javax.swing.JFrame frame = new javax.swing.JFrame("Kontoverwaltung");
+            Kontoverwaltung ui = new Kontoverwaltung();
+            frame.setContentPane(ui.getOverviewPanel());
+            frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+            frame.pack();
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+        });
     }
 
-    private static void printMenu() {
-        System.out.println("\n===== Kontoverwaltung =====");
-        System.out.println("1 - Konto anlegen");
-        System.out.println("2 - Konto auflösen");
-        System.out.println("3 - Einzahlen");
-        System.out.println("4 - Abheben");
-        System.out.println("5 - Kontoauszug");
-        System.out.println("6 - Überweisen");
-        System.out.println("7 - Alle Konten anzeigen");
-        System.out.println("0 - Beenden");
+    public static String kontoAnlegenFromUI(String art, String inhaber, int blz, int ktn, double start) {
+        Konto neu;
+        String a = art == null ? "" : art.trim().toLowerCase(Locale.ROOT);
+
+        if (a.startsWith("giro")) {
+            neu = new Girokonto(inhaber, blz, ktn, start, 500);
+        } else if (a.startsWith("spar")) {
+            neu = new Sparkonto(inhaber, blz, ktn, start);
+        } else if (a.startsWith("kredit")) {
+            neu = new Kreditkonto(inhaber, blz, ktn, start, 5000);
+        } else {
+            return "Unbekannte Kontoart: " + art;
+        }
+
+        konten.add(neu);
+
+        return "Konto angelegt";
     }
 
     private static void kontoAnlegen() {
@@ -60,7 +41,7 @@ public class Main {
         int art = readInt("Art: ");
         String inhaber = readString("Kontoinhaber: ");
         int blz = readInt("Bankleitzahl: ");
-        String kto = readString("Kontonummer: ");
+        int kto = readInt("Kontonummer: ");
         double start = readDouble("Startguthaben: ");
 
         Konto konto;
@@ -84,7 +65,7 @@ public class Main {
     }
 
     private static void kontoAufloesen() {
-        String nr = readString("Kontonummer zum Löschen: ");
+        int nr = readInt("Kontonummer zum Löschen: ");
         Konto k = findeKonto(nr);
         if (k == null) {
             System.out.println("Konto nicht gefunden.");
@@ -95,7 +76,7 @@ public class Main {
     }
 
     private static void einzahlen() {
-        Konto k = findeKonto(readString("Kontonummer: "));
+        Konto k = findeKonto(readInt("Kontonummer: "));
         if (k == null) {
             System.out.println("Konto nicht gefunden.");
             return;
@@ -106,7 +87,7 @@ public class Main {
     }
 
     private static void abheben() {
-        Konto k = findeKonto(readString("Kontonummer: "));
+        Konto k = findeKonto(readInt("Kontonummer: "));
         if (k == null) {
             System.out.println("Konto nicht gefunden.");
             return;
@@ -121,7 +102,7 @@ public class Main {
     }
 
     private static void kontoauszug() {
-        Konto k = findeKonto(readString("Kontonummer: "));
+        Konto k = findeKonto(readInt("Kontonummer: "));
         if (k == null) {
             System.out.println("Konto nicht gefunden.");
             return;
@@ -130,12 +111,12 @@ public class Main {
     }
 
     private static void ueberweisen() {
-        Konto von = findeKonto(readString("Von Kontonummer: "));
+        Konto von = findeKonto(readInt("Von Kontonummer: "));
         if (von == null) {
             System.out.println("Quellkonto nicht gefunden.");
             return;
         }
-        Konto nach = findeKonto(readString("An Kontonummer: "));
+        Konto nach = findeKonto(readInt("An Kontonummer: "));
         if (nach == null) {
             System.out.println("Zielkonto nicht gefunden.");
             return;
@@ -159,9 +140,9 @@ public class Main {
         }
     }
 
-    private static Konto findeKonto(String kontonummer) {
+    private static Konto findeKonto(int kontonummer) {
         for (Konto k : konten) {
-            if (k.getKontonummer().equals(kontonummer)) {
+            if (k.getKontonummer() == kontonummer) {
                 return k;
             }
         }

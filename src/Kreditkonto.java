@@ -1,7 +1,7 @@
 public class Kreditkonto extends Konto {
     private double kreditlimit = 5000;
 
-    public Kreditkonto(String kontoinhaber, int bankleitzahl, String kontonummer, double startsaldo, double kreditlimit) {
+    public Kreditkonto(String kontoinhaber, int bankleitzahl, int kontonummer, double startsaldo, double kreditlimit) {
         super(kontoinhaber, bankleitzahl, kontonummer, startsaldo, "Kreditkonto");
         this.kreditlimit = kreditlimit;
     }

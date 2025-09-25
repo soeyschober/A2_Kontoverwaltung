@@ -1,11 +1,11 @@
 public abstract class Konto {
     private String kontoinhaber;
     private int bankleitzahl;
-    private String kontonummer;
+    private int kontonummer;
     public double kontostand;
     private String kontoart;
 
-    public Konto(String kontoinhaber, int bankleitzahl, String kontonummer, double startguthaben, String kontoart) {
+    public Konto(String kontoinhaber, int bankleitzahl, int kontonummer, double startguthaben, String kontoart) {
         this.kontoinhaber = kontoinhaber;
         this.bankleitzahl = bankleitzahl;
         this.kontonummer = kontonummer;
@@ -52,11 +52,23 @@ public abstract class Konto {
 
     public abstract boolean darfAbheben(double betrag);
 
-    public String getKontonummer() {
+    public int getKontonummer() {
         return kontonummer;
     }
 
     public double getKontostand() {
         return kontostand;
+    }
+
+    public String getKontoinhaber() {
+        return kontoinhaber;
+    }
+
+    public int getBankleitzahl() {
+        return bankleitzahl;
+    }
+
+    public String getKontoart() {
+        return kontoart;
     }
 }

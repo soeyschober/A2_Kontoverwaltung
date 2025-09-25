@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Kontoverwaltung">
+  <grid id="27dc6" binding="overviewPnl" layout-manager="GridLayoutManager" row-count="9" column-count="3" same-size-horizontally="true" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="10" left="10" bottom="10" right="10"/>
+    <constraints>
+      <xy x="20" y="20" width="905" height="530"/>
+    </constraints>
+    <properties>
+      <background color="-1642497"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="89898" class="javax.swing.JLabel" binding="fehlerLbl">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Arial Monospaced" size="9"/>
+          <foreground color="-720881"/>
+          <text value="."/>
+        </properties>
+      </component>
+      <component id="d9030" class="javax.swing.JButton" binding="beendenBtn">
+        <constraints>
+          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-3460301"/>
+          <foreground color="-328966"/>
+          <text value="Beenden"/>
+        </properties>
+      </component>
+      <component id="2673f" class="javax.swing.JTextArea" binding="aktuellArea">
+        <constraints>
+          <grid row="2" column="2" row-span="4" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Arial Monospaced" size="12"/>
+          <lineWrap value="true"/>
+          <wrapStyleWord value="true"/>
+        </properties>
+      </component>
+      <scrollpane id="b2b60" binding="outputSPnl">
+        <constraints>
+          <grid row="1" column="1" row-span="8" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="2ffa2" class="javax.swing.JTextArea" binding="outputTxt">
+            <constraints/>
+            <properties>
+              <font name="Arial Monospaced" size="12"/>
+              <lineWrap value="true"/>
+              <wrapStyleWord value="true"/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
+      <component id="65c8b" class="javax.swing.JButton" binding="anlegenBtn">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Konto anlegen"/>
+        </properties>
+      </component>
+      <component id="e0718" class="javax.swing.JComboBox" binding="aktuellCBox">
+        <constraints>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="b3f33" class="javax.swing.JButton" binding="einzahlnBtn">
+        <constraints>
+          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Einzahlen"/>
+        </properties>
+      </component>
+      <component id="20a3" class="javax.swing.JButton" binding="auszahlenBtn">
+        <constraints>
+          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Auszahlen"/>
+        </properties>
+      </component>
+      <component id="9beed" class="javax.swing.JButton" binding="aufloesenBtn">
+        <constraints>
+          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Konto auflösen"/>
+        </properties>
+      </component>
+      <component id="a26bb" class="javax.swing.JButton" binding="kontoauszugBtn">
+        <constraints>
+          <grid row="2" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Kontoauzug"/>
+        </properties>
+      </component>
+      <component id="5013c" class="javax.swing.JButton" binding="ueberweisenBtn">
+        <constraints>
+          <grid row="4" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Überweisen"/>
+        </properties>
+      </component>
+      <component id="306fb" class="javax.swing.JButton" binding="anzeigenBtn">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Alle Konten anzeigen"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

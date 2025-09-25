@@ -1,5 +1,5 @@
 public class Sparkonto extends Konto {
-    public Sparkonto(String kontoinhaber, int bankleitzahl, String kontonummer, double startguthaben) {
+    public Sparkonto(String kontoinhaber, int bankleitzahl, int kontonummer, double startguthaben) {
         super(kontoinhaber, bankleitzahl, kontonummer, startguthaben, "Sparkonto");
     }
 
